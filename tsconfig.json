@@ -12,6 +12,7 @@
     "tsBuildInfoFile": ".build/tsbuildinfo",
     "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
+    "allowArbitraryExtensions": true,
     "moduleDetection": "auto",
     "incremental": true,
     "esModuleInterop": true,
