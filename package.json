@@ -1,15 +1,15 @@
 {
-    "name": "utils",
-    "version": "0.0.2",
+    "name": "airtable",
+    "version": "0.0.1",
     "type": "module",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Attention-Spa/utils.git"
+        "url": "git+https://github.com/Attention-Spa/airtable.git"
     },
     "private": true,
     "author": {
         "name": "Dominik Bošnjak",
-        "email": "bosnjakinimod@gmail.com"
+        "email": "dominik@attention-spa.com"
     },
     "scripts": {
         "lint": "eslint \"src/**/*.ts\" \".github/**/*.ts\"",
