@@ -1,7 +1,7 @@
 import meta from './meta.json' assert { type: 'json' };
 
 export async function loadFormulaTemplate(): Promise<string> {
-  const url = new URL('./index.formula', import.meta.url);
+  const url = new URL('./formula.md', import.meta.url);
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error(`Failed to load formula: ${res.status}`);
