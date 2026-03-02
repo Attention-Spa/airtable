@@ -1,0 +1,7 @@
+LEN(
+  REGEX_REPLACE(
+    Attachments,
+    '(?i).+?(?<plusOne>\\()(?<attachmentUrl>https:\\/{2}(?:\\w+\\.)?airtable.com.+?)\\)(?:,\\s*)?',
+    '$<plusOne>'
+  )
+)
