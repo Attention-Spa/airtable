@@ -1,0 +1,14 @@
+{
+  "name": "count-bytes",
+  "description": "Counts the number of bytes in a given string / text.",
+  "returnType": "number",
+  "compatibleFieldTypes": ["formula"],
+  "args": [
+    {
+      "name": "Text",
+      "type": "string",
+      "default": "TextField",
+      "description": "An Airtable field or expression that returns a string to analyze."
+    }
+  ]
+}
