@@ -9,9 +9,9 @@ export async function loadFormulaTemplate(): Promise<string> {
   return res.text(); // UTF-8 by default
 };
 
-export async function compileFormulaTemplate(args = {}) {
+export function compileFormula({template: string, args: Record<string, unknown> = {} }) {
+  
   const resolved = { fieldName: 'Field', ...args };
-  const template = await loadFormulaTemplate();
   
   return Object.entries(resolved).reduce(
     (src, [key, val]) => src.replaceAll(`{${key}}`, val),
@@ -21,4 +21,4 @@ export async function compileFormulaTemplate(args = {}) {
 
 export { meta };
 
-export default {loadFormulaTemplate as loadFormula, compileFormulaTemplate as compile, meta };
+export default {loadFormulaTemplate, compileFormula, meta };
