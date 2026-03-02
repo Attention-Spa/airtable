@@ -2,7 +2,7 @@
   "name": "count-bytes",
   "description": "Counts the number of bytes in a given string / text.",
   "returnType": "number",
-  "compatibleFieldTypes": ["formula"],
+  "compatibleFieldTypes": ["formula", "md", "js", "mjs", "ts", "txt"],
   "args": [
     {
       "name": "Text",
