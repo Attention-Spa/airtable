@@ -1,66 +1,41 @@
 {
+  "typeAcquisition": {
+    "enable": true
+  },
   "compilerOptions": {
     "module": "nodenext",
-    "target": "ESNext",
+    "target": "esnext",
     "sourceMap": true,
-    "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "lib": [
-      "WebWorker",
-      "ESNext"
+      "WebWorker"
     ],
+    "composite": true,
+    "emitDeclarationOnly": true,
+    /* 
+    "declaration": true,  
+    "noEmit": false,
+    */
     "tsBuildInfoFile": ".build/tsbuildinfo",
     "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
     "allowArbitraryExtensions": true,
+    "allowUmdGlobalAccess": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "allowUnreachableCode": true,
     "moduleDetection": "auto",
     "incremental": true,
     "esModuleInterop": true,
-    "emitDeclarationOnly": true,
-    "composite": true,
-    "strict": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
-    "noEmit": true,
+    "strict": true,
     "baseUrl": ".",
     "removeComments": false,
-    "noEmitHelpers": false,
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@src/": [
-        "src/*"
-      ],
-      "@http/": [
-        "src/http/*"
-      ],
-      "@types/": [
-        "src/types/*"
-      ],
-      "@array/": [
-        "src/array/*"
-      ],
-      "@validate/": [
-        "src/validate/*"
+      "@formula/*": [
+        "formulas/*"
       ]
     }
-  },
-  "typeAcquisition": {
-    "enable": true,
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "docs",
-    "node_modules",
-    "scripts",
-    "tests",
-    ".tests",
-    "todo",
-  ],
-  "ts-node": {
-    "esm": true
   }
 }
