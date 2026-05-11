@@ -1,0 +1,14 @@
+{
+  "name": "parse-semver",
+  "description": "Parses a single-line version string, validating its SemVer format and returning its nodes if valid.",
+  "returnType": "string",
+  "compatibleFieldTypes": ["formula", "md", "js", "mjs", "ts", "txt"],
+  "args": [
+    {
+      "name": "version.semver",
+      "type": "string",
+      "default": "TextField",
+      "description": "An Airtable field or expression that returns a string to analyze."
+    }
+  ]
+}
