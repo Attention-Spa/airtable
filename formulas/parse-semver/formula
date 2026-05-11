@@ -1,9 +1,12 @@
 REGEX_REPLACE(
   REGEX_REPLACE(
-    {version.semver} & " ",
-    "^(?:(?P<missing> )|(?P<valid>(?P<major>0|[1-9]\\d*)\\.(?P<minor>0|[1-9]\\d*)\\.(?P<patch>0|[1-9]\\d*)(?:-(?P<prerelease>(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+(?P<buildmetadata>[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?) |(?P<invalid>.*) )$",
-    "§$<missing>¤#ERROR: Version not defined.§§$<valid>¤major: $<major>\nminor: $<minor>\npatch: $<patch>\nprerelease: $<prerelease>\nbuildmetadata: $<buildmetadata>§§$<invalid>¤#ERROR: Invalid semver `$<invalid>`§"
+    "config.nullError=\"#ERROR: Version not defined.\"\n"
+    & "config.invalidError=\"#ERROR: Invalid semver `{config.version.semver}`.\"\n"
+    & "config.nullSymbol=\"❌\"\n"
+    & "version.semver=" & {version.semver} & " ",
+    "^(?:config\\.nullError=\"(?P<nullError>[^\"]*)\"\\n)?(?:config\\.invalidError=\"(?P<invalidBefore>[^\"]*)\\{config\\.version\\.semver\\}(?P<invalidAfter>[^\"]*)\"\\n)?(?:config\\.nullSymbol=\"(?P<nullSymbol>[^\"]*)\"\\n)?version\\.semver=(?:(?P<missing>\\x20)|(?P<valid>(?P<major>0|[1-9]\\d*)\\.(?P<minor>0|[1-9]\\d*)\\.(?P<patch>0|[1-9]\\d*)(?:-(?P<prerelease>(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+(?P<buildmetadata>[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*))?)\\x20|(?P<invalid>.*)\\x20)$",
+    "§$<missing>¤$<nullError>§§$<valid>¤major: $<major>␟$<nullSymbol>\nminor: $<minor>␟$<nullSymbol>\npatch: $<patch>␟$<nullSymbol>\nprerelease: $<prerelease>␟$<nullSymbol>\nbuildmetadata: $<buildmetadata>␟$<nullSymbol>§§$<invalid>¤$<invalidBefore>$<invalid>$<invalidAfter>§"
   ),
-  "§(?:[^¤§]+¤([^§]*)|¤[^§]*)§",
-  "$1"
+  "§¤[^§]*§|§[^¤§]+¤|§|(?<prefix>: )(?:(?<notNull>[^␟§\n]+)␟[^§\n]*|␟(?<isNull>[^§\n]*))",
+  "$<prefix>$<notNull>$<isNull>"
 )
